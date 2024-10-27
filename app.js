@@ -40,3 +40,30 @@ window.addEventListener("load", () => {
         console.error("Autoplay blocked:", error);
     });
 });
+
+// Function to track unique visits for this user
+        function trackUniqueVisit() {
+            // Retrieve current unique visit count from localStorage or set to 0
+            let uniqueVisitCount = localStorage.getItem('uniqueVisitCount') || 0;
+
+            // Check if the user has visited before
+            const hasVisited = localStorage.getItem('hasVisited');
+
+            // If "hasVisited" is not set, it's the user's first visit for the count increment
+            if (!hasVisited) {
+                // Increment the unique visit count
+                uniqueVisitCount++;
+
+                // Update unique visit count in localStorage
+                localStorage.setItem('uniqueVisitCount', uniqueVisitCount);
+
+                // Set "hasVisited" flag to true in localStorage
+                localStorage.setItem('hasVisited', 'true');
+            }
+
+            // Display the unique visit count
+            document.getElementById('uniqueVisitCount').textContent = uniqueVisitCount;
+        }
+
+        // Run the function on page load
+        trackUniqueVisit();
