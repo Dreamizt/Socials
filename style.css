@@ -1,0 +1,262 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 1rem;
+    font-family: Pixelify Sans;
+    --textprimary: Black;
+    --textsecondary: White;
+    --border:#292731;
+    --accent1 :#EFE5FD;
+    --accent2 :#987FB3;
+    --accent3 :#F4CFF6;
+    --accent3 :#7378D0;
+    
+}
+
+body{
+    overflow: hidden;
+    width: 100%;
+    height: 95vw;
+    background-color: #110711 ;
+    position: relative;  
+}
+
+video{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    filter: blur(0.8em);
+    z-index: -1;
+}
+
+/* Navigator */
+
+header{
+    display: grid;  
+    place-items: center;
+    background-color: var(--accent1);
+    width: 100vw;
+    height: 5vh;
+    border-bottom: 5px solid var(--border);
+    z-index: 1;
+}
+
+.logo{
+    color: var(--textprimary1);
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0.5em;
+}
+
+/* Navigator */
+
+/* Button Styling */
+button {
+    padding: 3px;
+    font-family: Pixelify Sans;
+    background-color: transparent;
+    color: var(--accent3);
+    text-shadow: -1px 1px 1px black;
+    border-radius: 20%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+button:hover {
+    background-color: var(--accent1);
+}
+
+#muteButton{
+    position: absolute;
+    top:3%;
+    left:2%;
+}
+
+#playButton{
+    position: absolute;
+    top:6%;
+    left:2%;
+}
+
+/* Button Styling */
+/* Main */
+
+main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ .mainPage{
+    width: 600px;
+    height: 350px;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .topbox{
+    font-size: 1em;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+ }
+
+ .mainPage h1{
+    margin: 5px;
+    font-size:4rem;
+    color: var(--accent1);
+    text-shadow: -2px 2px 0px black;
+ }
+
+ .quote{
+    text-align: center;
+    font-size: 1rem;
+    text-shadow: none;
+    color: #434670;
+ }
+
+ .songPlaying {
+    color: var(--accent2);
+    padding: 1em;
+    font-size: .5em;
+ }
+
+ figure{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .alink{
+    display: grid;
+    place-items: center;
+    background-color: transparent;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    transition: 0.5s all ease;
+    position: relative;
+    cursor: pointer;
+ }
+.alink::before{
+    content: attr(social);
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #ffffff ;
+    position: absolute;
+    opacity: 0;
+    transform: translateY(55px);
+    transition: 0.5s all ease;
+}
+ .svg-icon{
+    color: #232323;
+    width: 80px;
+    height: 80px;             /* ICONS */
+    object-fit: cover;
+    padding: 0.5em;
+    transform: rotate(45deg);
+    transition: 0.5s all ease;
+ }
+/* ANIMATE */
+.alink:hover{
+    text-shadow: 0 0 50px #ffffff6b;
+}
+
+.svg-icon:hover{
+    transform: scale(1.2) rotate(0deg);
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 30px var(--accent-color));
+}
+
+.alink:hover::before{
+    opacity: 1;
+    transform: scale(2) translateY(50px)
+}
+
+/* ANIMATE */
+
+ /* Main */
+
+/* Footer WaterMark */
+
+footer{
+    width: 100vw;
+    position: relative;
+}
+
+footer p{
+    font-size: 1.5rem;
+    position:fixed;
+    padding: 5px;
+    bottom: 0%;
+    left: 0%;
+    color: white;
+    background-color:black ;
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover{
+    color:red;
+}
+/* Footer WaterMark */
+
+
+/* MEDIA AN QUERY */
+
+@media (max-width:1024px) {
+
+    #muteButton{
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    
+    }
+    #playButton{
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+}
+
+@media (max-width:640px) {
+
+#muteButton{
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
+#playButton{
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+footer p{
+    font-size: 1rem;
+}
+
+}
+
+
+
+
