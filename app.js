@@ -1,3 +1,4 @@
+// Function to copy Discord ID
 function copyText() {
     const discordID = "dreamists"; // Replace with your actual Discord ID
 
@@ -41,29 +42,45 @@ window.addEventListener("load", () => {
     });
 });
 
-// Function to track unique visits for this user
-        function trackUniqueVisit() {
-            // Retrieve current unique visit count from localStorage or set to 0
-            let uniqueVisitCount = localStorage.getItem('uniqueVisitCount') || 0;
+// =========================
+// GLOBAL VISIT TRACKER (Firebase)
+// =========================
 
-            // Check if the user has visited before
-            const hasVisited = localStorage.getItem('hasVisited');
+// Your Firebase config
+const firebaseConfig = {
+    apiKey: "AIzaSyAaZKCzznNAGS2XYWJjd1yQVpGeMGmJ_bU",
+    authDomain: "realttracker.firebaseapp.com",
+    databaseURL: "https://realttracker-default-rtdb.firebaseio.com",
+    projectId: "realttracker",
+    storageBucket: "realttracker.firebasestorage.app",
+    messagingSenderId: "672432400589",
+    appId: "1:672432400589:web:46cc1fb12e189447796184",
+    measurementId: "G-2WQLNSHV6F"
+};
 
-            // If "hasVisited" is not set, it's the user's first visit for the count increment
-            if (!hasVisited) {
-                // Increment the unique visit count
-                uniqueVisitCount++;
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
-                // Update unique visit count in localStorage
-                localStorage.setItem('uniqueVisitCount', uniqueVisitCount);
+function trackGlobalVisits() {
+    const visitRef = db.ref("visitCount");
 
-                // Set "hasVisited" flag to true in localStorage
-                localStorage.setItem('hasVisited', 'true');
-            }
+    // Show zero immediately before Firebase updates
+    document.getElementById("uniqueVisitCount").textContent = 0;
 
-            // Display the unique visit count
-            document.getElementById('uniqueVisitCount').textContent = uniqueVisitCount;
+    // Increment the counter
+    visitRef.transaction((count) => {
+        return (count || 0) + 1;
+    });
+
+    // Display the count when Firebase updates
+    visitRef.on("value", (snapshot) => {
+        const countElement = document.getElementById("uniqueVisitCount");
+        if (countElement) {
+            countElement.textContent = snapshot.val() || 0;
         }
+    });
+}
 
-        // Run the function on page load
-        trackUniqueVisit();
+// Run tracker when page loads
+window.addEventListener("load", trackGlobalVisits);
