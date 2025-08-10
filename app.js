@@ -37,7 +37,15 @@ playButton.addEventListener("click", () => {
 });
 
 window.addEventListener("load", () => {
-    video.play().catch(error => {
+    video.muted = true;
+    video.play().then(() => {
+        
+        // Wait a tiny bit before unmuting
+        
+        setTimeout(() => {
+            video.muted = false;
+        }, 500);
+    }).catch(error => {
         console.error("Autoplay blocked:", error);
     });
 });
@@ -84,3 +92,4 @@ function trackGlobalVisits() {
 
 // Run tracker when page loads
 window.addEventListener("load", trackGlobalVisits);
+
