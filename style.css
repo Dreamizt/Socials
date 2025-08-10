@@ -9,11 +9,11 @@
     font-family: Pixelify Sans;
     --textprimary: Black;
     --textsecondary: White;
-    --border:#292731;
-    --accent1 :#EFE5FD;
-    --accent2 :#987FB3;
-    --accent3 :#F4CFF6;
-    --accent3 :#7378D0;
+    --border:#312b27;
+    --accent1 :#ffd06a;
+    --accent2 :#b3ab7f;
+    --accent3 :#f6edcf;
+    --accent3 :#d0ba73;
     
 }
 
@@ -124,7 +124,7 @@ main{
     text-align: center;
     font-size: 1rem;
     text-shadow: none;
-    color: #434670;
+    color: #fff5f2;
  }
 
  .songPlaying {
@@ -269,6 +269,7 @@ footer p{
 }
 
 }
+
 
 
 
